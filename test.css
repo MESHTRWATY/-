@@ -1,0 +1,849 @@
+/* =====================================
+   مشترواتي
+   ملف التصميم الرئيسي
+===================================== */
+
+
+/* المتغيرات الأساسية */
+
+:root {
+    --primary: #087f70;
+    --primary-dark: #075e54;
+    --primary-light: #e5f6f1;
+
+    --background: #f3f7f8;
+    --white: #ffffff;
+
+    --text: #20343a;
+    --muted: #73838b;
+
+    --border: #dfe8eb;
+
+    --success: #147a45;
+    --success-bg: #e8f7ed;
+
+    --error: #b42318;
+    --error-bg: #fff0ee;
+
+    --shadow: 0 12px 40px rgba(24, 60, 70, 0.08);
+}
+
+
+/* إعدادات عامة */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    font-family: "Cairo", Tahoma, Arial, sans-serif;
+
+    direction: rtl;
+    text-align: right;
+
+    background: var(--background);
+    color: var(--text);
+
+    min-height: 100vh;
+    line-height: 1.8;
+}
+
+
+/* =====================================
+   رأس التطبيق
+===================================== */
+
+.header {
+    position: relative;
+    overflow: hidden;
+
+    background: linear-gradient(
+        135deg,
+        #087f70 0%,
+        #096b61 55%,
+        #07554e 100%
+    );
+
+    color: var(--white);
+
+    padding: 35px 20px 32px;
+
+    text-align: center;
+
+    border-radius: 0 0 35px 35px;
+
+    box-shadow: 0 10px 30px rgba(8, 127, 112, 0.18);
+}
+
+
+.header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    top: -110px;
+    right: -70px;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+.header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    bottom: -100px;
+    left: -40px;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+.header-content {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* أيقونة التطبيق */
+
+.logo-icon {
+    font-size: 35px;
+    margin-bottom: 3px;
+
+    animation: logoFloat 3s ease-in-out infinite;
+}
+
+
+/* اسم مشترواتي */
+
+.logo {
+    font-size: clamp(36px, 6vw, 48px);
+
+    font-weight: 900;
+
+    letter-spacing: -1px;
+
+    line-height: 1.5;
+
+    color: #ffffff;
+
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =====================================
+   الجملة المتحركة
+===================================== */
+
+.ticker {
+    width: 100%;
+    max-width: 440px;
+
+    margin: 12px auto 0;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    direction: ltr;
+
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 8%,
+        black 92%,
+        transparent
+    );
+
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 8%,
+        black 92%,
+        transparent
+    );
+}
+
+
+.ticker-track {
+    display: flex;
+
+    width: max-content;
+
+    animation: tickerMove 12s linear infinite;
+
+    will-change: transform;
+}
+
+
+.ticker-text {
+    flex: 0 0 auto;
+
+    display: block;
+
+    padding-left: 45px;
+
+    font-size: 22px;
+
+    font-weight: 800;
+
+    color: #ffffff;
+}
+
+
+/* إيقاف الحركة عند مرور الماوس */
+
+.ticker:hover .ticker-track {
+    animation-play-state: paused;
+}
+
+
+/* الحركة من اليمين إلى الشمال */
+
+@keyframes tickerMove {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(50%);
+    }
+
+}
+
+
+/* حركة الأيقونة */
+
+@keyframes logoFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+
+}
+
+
+/* =====================================
+   الحاوية الرئيسية
+===================================== */
+
+.container {
+    width: 100%;
+
+    max-width: 680px;
+
+    margin: 0 auto;
+
+    padding: 22px 20px;
+}
+
+
+/* =====================================
+   الترحيب
+===================================== */
+
+.welcome-section {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin: 10px 0 25px;
+}
+
+
+.welcome-icon {
+    flex-shrink: 0;
+
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--primary-light);
+
+    border-radius: 18px;
+
+    font-size: 27px;
+}
+
+
+.welcome-section h2 {
+    font-size: 21px;
+
+    font-weight: 800;
+
+    margin-bottom: 3px;
+}
+
+
+.welcome-section p {
+    font-size: 14px;
+
+    color: var(--muted);
+}
+
+
+/* =====================================
+   بطاقة الطلب
+===================================== */
+
+.order-card {
+    background: var(--white);
+
+    padding: 30px;
+
+    border-radius: 24px;
+
+    border: 1px solid rgba(223, 232, 235, 0.8);
+
+    box-shadow: var(--shadow);
+}
+
+
+/* عنوان النموذج */
+
+.section-heading {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    margin-bottom: 28px;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+
+.heading-icon {
+    width: 50px;
+    height: 50px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+
+    background: var(--primary-light);
+
+    font-size: 23px;
+}
+
+
+.section-title {
+    font-size: 22px;
+
+    font-weight: 900;
+
+    line-height: 1.6;
+}
+
+
+.section-description {
+    font-size: 13px;
+
+    color: var(--muted);
+
+    margin-top: 2px;
+}
+
+
+/* =====================================
+   الحقول
+===================================== */
+
+.form-group {
+    margin-bottom: 23px;
+}
+
+
+.form-group label {
+    display: block;
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    margin-bottom: 9px;
+
+    color: var(--text);
+}
+
+
+.required {
+    color: #e05252;
+
+    margin-right: 3px;
+}
+
+
+.form-group input,
+.form-group textarea {
+    display: block;
+
+    width: 100%;
+
+    border: 1px solid var(--border);
+
+    border-radius: 13px;
+
+    padding: 14px 16px;
+
+    background: #fbfcfd;
+
+    color: var(--text);
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    outline: none;
+
+    transition:
+        border-color 0.25s ease,
+        background-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* التركيز على الخانات */
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary);
+
+    background: #ffffff;
+
+    box-shadow: 0 0 0 4px rgba(8, 127, 112, 0.10);
+}
+
+
+/* النص التوضيحي */
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #9aa8b0;
+
+    font-size: 14px;
+
+    opacity: 1;
+}
+
+
+/* مربع تفاصيل المشتريات */
+
+.form-group textarea {
+    min-height: 155px;
+
+    resize: vertical;
+}
+
+
+/* ملاحظة تحت الخانة */
+
+.field-hint {
+    display: block;
+
+    margin-top: 7px;
+
+    font-size: 12px;
+
+    color: var(--muted);
+}
+
+
+/* =====================================
+   زر إرسال الطلب
+===================================== */
+
+.submit-button {
+    width: 100%;
+
+    min-height: 58px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    padding: 14px 20px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary-dark)
+    );
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 17px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    box-shadow: 0 7px 18px rgba(8, 127, 112, 0.18);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+
+.submit-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 10px 24px rgba(8, 127, 112, 0.24);
+}
+
+
+.submit-button:active {
+    transform: scale(0.98);
+}
+
+
+.submit-button:focus-visible {
+    outline: 3px solid rgba(8, 127, 112, 0.35);
+
+    outline-offset: 4px;
+}
+
+
+.submit-button:disabled {
+    opacity: 0.65;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+.button-icon {
+    font-size: 22px;
+
+    transition: transform 0.2s ease;
+}
+
+
+.submit-button:hover .button-icon {
+    transform: translateX(-4px);
+}
+
+
+/* =====================================
+   رسائل النجاح والخطأ
+===================================== */
+
+.message {
+    display: none;
+
+    margin-top: 20px;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    overflow-wrap: anywhere;
+}
+
+
+.message.success {
+    display: block;
+
+    color: var(--success);
+
+    background: var(--success-bg);
+
+    border: 1px solid #b9e6c8;
+}
+
+
+.message.error {
+    display: block;
+
+    color: var(--error);
+
+    background: var(--error-bg);
+
+    border: 1px solid #f2c6c1;
+}
+
+
+/* =====================================
+   تنبيه الخصوصية
+===================================== */
+
+.privacy-note {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 9px;
+
+    margin-top: 22px;
+
+    padding: 13px;
+
+    background: #f4f8fa;
+
+    border-radius: 11px;
+}
+
+
+.privacy-note span {
+    flex-shrink: 0;
+
+    font-size: 16px;
+}
+
+
+.privacy-note p {
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.9;
+}
+
+
+/* =====================================
+   أسفل التطبيق
+===================================== */
+
+.footer {
+    padding: 30px 10px 20px;
+
+    text-align: center;
+
+    color: var(--muted);
+}
+
+
+.footer-logo {
+    font-size: 20px;
+
+    font-weight: 900;
+
+    color: var(--primary);
+}
+
+
+.footer p {
+    font-size: 13px;
+
+    margin-top: 3px;
+}
+
+
+.footer small {
+    display: block;
+
+    margin-top: 10px;
+
+    font-size: 11px;
+}
+
+
+/* =====================================
+   الموبايل
+===================================== */
+
+@media (max-width: 600px) {
+
+    .header {
+        padding: 27px 15px 25px;
+
+        border-radius: 0 0 26px 26px;
+    }
+
+    .logo {
+        font-size: 38px;
+    }
+
+    .ticker {
+        max-width: 340px;
+
+        margin-top: 10px;
+    }
+
+    .ticker-text {
+        font-size: 20px;
+
+        padding-left: 35px;
+    }
+
+    .container {
+        padding: 17px 14px;
+    }
+
+    .welcome-section {
+        gap: 12px;
+
+        margin-bottom: 20px;
+    }
+
+    .welcome-icon {
+        width: 49px;
+        height: 49px;
+
+        border-radius: 15px;
+
+        font-size: 23px;
+    }
+
+    .welcome-section h2 {
+        font-size: 18px;
+    }
+
+    .welcome-section p {
+        font-size: 12px;
+    }
+
+    .order-card {
+        padding: 22px 17px;
+
+        border-radius: 19px;
+    }
+
+    .section-heading {
+        gap: 10px;
+
+        margin-bottom: 24px;
+    }
+
+    .heading-icon {
+        width: 44px;
+        height: 44px;
+
+        font-size: 20px;
+    }
+
+    .section-title {
+        font-size: 19px;
+    }
+
+    .section-description {
+        font-size: 12px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        font-size: 14px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 13px;
+
+        font-size: 14px;
+    }
+
+    .submit-button {
+        min-height: 54px;
+
+        font-size: 16px;
+    }
+
+}
+
+
+/* الشاشات الصغيرة جدًا */
+
+@media (max-width: 360px) {
+
+    .container {
+        padding: 12px 10px;
+    }
+
+    .order-card {
+        padding: 18px 13px;
+    }
+
+    .logo {
+        font-size: 33px;
+    }
+
+    .ticker-text {
+        font-size: 18px;
+    }
+
+}
+
+
+/* تقليل الحركة لمن يفضل ذلك */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+    }
+
+}

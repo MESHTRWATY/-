@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#087f70">
+
+    <title>مشترواتي</title>
+
+    <!-- ملف التصميم -->
+    <link rel="stylesheet" href="test.css">
+
+    <!-- الخط العربي -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+<body>
+
+    <!-- رأس التطبيق -->
+    <header class="header">
+
+        <div class="header-content">
+
+            <div class="logo-icon" aria-hidden="true">
+                🛍️
+            </div>
+
+            <h1 class="logo">
+                مشترواتي
+            </h1>
+
+            <!-- الجملة المتحركة -->
+            <div class="ticker" aria-label="مشتريات بيتك بسهولة وراحة">
+
+                <div class="ticker-track">
+
+                    <span class="ticker-text">
+                        مشتريات بيتك... بسهولة وراحة ✨
+                    </span>
+
+                    <span class="ticker-text" aria-hidden="true">
+                        مشتريات بيتك... بسهولة وراحة ✨
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- المحتوى الرئيسي -->
+    <main class="container">
+
+        <!-- الترحيب -->
+        <section class="welcome-section">
+
+            <div class="welcome-icon" aria-hidden="true">
+                👋
+            </div>
+
+            <div>
+
+                <h2>
+                    أهلاً بيك في مشترواتي
+                </h2>
+
+                <p>
+                    اكتب بياناتك ومشترياتك بكل سهولة.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- نموذج الطلب -->
+        <section class="order-card">
+
+            <div class="section-heading">
+
+                <span class="heading-icon" aria-hidden="true">
+                    📝
+                </span>
+
+                <div>
+
+                    <h2 class="section-title">
+                        طلب مشتريات جديد
+                    </h2>
+
+                    <p class="section-description">
+                        من فضلك املأ البيانات التالية.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form id="orderForm">
+
+                <!-- اسم العميل -->
+                <div class="form-group">
+
+                    <label for="customerName">
+                        اسم العميل
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customerName"
+                        name="customerName"
+                        placeholder="اكتب اسمك بالكامل"
+                        autocomplete="name"
+                        maxlength="100"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- رقم التليفون -->
+                <div class="form-group">
+
+                    <label for="phone">
+                        رقم التليفون
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="مثال: 01012345678"
+                        autocomplete="tel"
+                        inputmode="tel"
+                        maxlength="20"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- اسم المشروع -->
+                <div class="form-group">
+
+                    <label for="projectName">
+                        اسم المشروع
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="projectName"
+                        name="projectName"
+                        placeholder="اكتب اسم المشروع"
+                        maxlength="100"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- رقم العمارة -->
+                <div class="form-group">
+
+                    <label for="buildingNumber">
+                        رقم العمارة
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="buildingNumber"
+                        name="buildingNumber"
+                        placeholder="اكتب رقم العمارة"
+                        maxlength="30"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- المشتريات -->
+                <div class="form-group">
+
+                    <label for="orderDetails">
+                        المشتريات المطلوبة
+                        <span class="required">*</span>
+                    </label>
+
+                    <textarea
+                        id="orderDetails"
+                        name="orderDetails"
+                        rows="6"
+                        maxlength="3000"
+                        placeholder="اكتب كل المشتريات اللي محتاجها، مع الكميات والتفاصيل..."
+                        required
+                    ></textarea>
+
+                    <small class="field-hint">
+                        اكتب كل طلب في سطر لوحده لتسهيل مراجعته.
+                    </small>
+
+                </div>
+
+
+                <!-- زر الإرسال -->
+                <button
+                    type="submit"
+                    id="submitButton"
+                    class="submit-button"
+                >
+
+                    <span>إرسال الطلب</span>
+
+                    <span class="button-icon" aria-hidden="true">
+                        ←
+                    </span>
+
+                </button>
+
+            </form>
+
+
+            <!-- رسائل الحالة -->
+            <div
+                id="message"
+                class="message"
+                role="status"
+                aria-live="polite"
+            ></div>
+
+
+            <!-- تنبيه -->
+            <div class="privacy-note">
+
+                <span aria-hidden="true">ℹ️</span>
+
+                <p>
+                    تأكد من صحة بياناتك وتفاصيل مشترياتك قبل إرسال الطلب.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- تذييل الصفحة -->
+        <footer class="footer">
+
+            <div class="footer-logo">
+                🛍️ مشترواتي
+            </div>
+
+            <p>
+                مشتريات بيتك... بسهولة وراحة
+            </p>
+
+            <small>
+                جميع الحقوق محفوظة © 2026
+            </small>
+
+        </footer>
+
+    </main>
+
+
+    <!-- ملف JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
